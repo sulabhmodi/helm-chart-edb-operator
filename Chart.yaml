@@ -1,0 +1,6 @@
+apiVersion: v2
+name: edb-operator
+description: Helm chart to deploy EDB Postgres Operator in OpenShift using OLM
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

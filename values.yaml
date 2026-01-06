@@ -1,0 +1,34 @@
+# Default values for edb-operator
+# This is a YAML-formatted file.
+
+# Namespace configuration
+namespace:
+  name: postgres-custom
+  create: true
+
+# Operator configuration
+operator:
+  name: cloud-native-postgresql
+  # Channel to subscribe to (e.g., stable, v1, etc.)
+  channel: stable-v1.28
+  # Catalog source name (e.g., redhat-operators, certified-operators, etc.)
+  catalogSource: certified-operators
+  # Catalog source namespace
+  catalogSourceNamespace: openshift-marketplace
+  # Approval strategy: Automatic or Manual
+  approval: Automatic
+  # Starting CSV (optional, leave empty to use default from channel)
+  startingCSV: ""
+
+# OperatorGroup configuration
+operatorGroup:
+  name: edb-operator-group
+  # Target namespaces for the operator
+  # Empty list means all namespaces
+  targetNamespaces: []
+  # If targetNamespaces is empty and this is true, operator will watch all namespaces
+  watchAllNamespaces: true
+
+# Subscription configuration
+subscription:
+  name: cloud-native-postgresql

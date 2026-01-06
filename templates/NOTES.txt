@@ -1,0 +1,15 @@
+1. EDB Operator has been deployed to namespace: {{ .Values.namespace.name }}
+
+2. Check the subscription status:
+   oc get subscription {{ include "edb-operator.subscriptionName" . }} -n {{ .Values.namespace.name }}
+
+3. Check the operator CSV (ClusterServiceVersion):
+   oc get csv -n {{ .Values.namespace.name }}
+
+4. Check the operator pods:
+   oc get pods -n {{ .Values.namespace.name }}
+
+5. Verify the operator is ready:
+   oc wait --for=condition=Installed csv/$(oc get csv -n {{ .Values.namespace.name }} -l operators.coreos.com/{{ include "edb-operator.subscriptionName" . }}.{{ .Values.namespace.name }}='' -o jsonpath='{.items[0].metadata.name}') -n {{ .Values.namespace.name }} --timeout=600s
+
+For more information, see the README.md file.
